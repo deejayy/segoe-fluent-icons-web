@@ -1,4 +1,4 @@
-# Browse Segoe Fluet Icons online, search and copy icon name
+# Browse Segoe Fluent Icons online, search and copy icon name
 
 https://deejayy.github.io/segoe-fluent-icons-web
 
