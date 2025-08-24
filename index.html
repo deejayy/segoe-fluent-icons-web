@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SF Symbols Catalog</title>
-    <link rel="stylesheet" href="SF-Symbols.css" />
+    <link rel="stylesheet" href="SegoeFluentIcons-Regular.css" />
     <style>
       body {
         font-family: sans-serif, 'SF Pro Text';
@@ -69,13 +69,13 @@
       let synonyms = { synonym: ['synonym1', 'synonym2'] };
 
       document.addEventListener('DOMContentLoaded', async () => {
-        const css = await fetch('SF-Symbols.css').then((response) => response.text());
+        const css = await fetch('SegoeFluentIcons-Regular.css').then((response) => response.text());
         const symbolsContainer = document.querySelector('.gs');
         symbols = css
           .split(/[\r\n]/)
-          .filter((line) => line.trim().startsWith('.sfs-'))
+          .filter((line) => line.trim().startsWith('.sfl-'))
           .map((line) => {
-            const match = line.match(/\.sfs-(\S+)::after\s*{/);
+            const match = line.match(/\.sfl-(\S+)::after\s*{/);
             return match ? match[1] : null;
           })
           .filter(Boolean);
@@ -90,8 +90,9 @@
 
           if (target.className === 'g-w') {
             const symbolName = target.querySelector('.g-d').textContent;
-            navigator.clipboard.writeText(symbolName.replace(/ /g, '.')).then(() => {
-              alert(`Copied: ${symbolName.replace(/ /g, '.')}`);
+            const toCopy = symbolName.replace(/ ([a-z])|^[a-z]/g, (a) => a.toUpperCase().trim());
+            navigator.clipboard.writeText(toCopy).then(() => {
+              alert(`Copied: ${toCopy}`);
             });
           }
         });
@@ -101,7 +102,7 @@
         return `<div class="g-w" title="${name.replace(
           /-/gi,
           '.',
-        )}"><div class="g"><span class="sfs sfs-${name}"></span></div><div class="g-d">${name.replace(/-/gi, ' ')}</div></div>`;
+        )}"><div class="g"><span class="sfl sfl-${name}"></span></div><div class="g-d">${name.replace(/-/gi, ' ')}</div></div>`;
       };
 
       const filterSymbols = (value) => {
