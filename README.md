@@ -1,4 +1,4 @@
-# Browse SF Symbols font online, search and copy symbol ids
+# Browse Segoe Fluet Icons online, search and copy icon name
 
 https://deejayy.github.io/segoe-fluent-icons-web
 
